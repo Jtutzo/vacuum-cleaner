@@ -1,4 +1,4 @@
-# Vacuum cleaner (iHoover)
+# Aspirateur automatique iHoover (Yanport)
 
 Réalisation d'un [aspirateur automatique](https://docs.google.com/document/d/1lmerjBXassYpTq-O-cfSBbw3yf0hv5GdlQSEqChTSXs/edit).
 

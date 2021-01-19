@@ -1,7 +1,9 @@
 package com.jtutzo.ihoover.vacuumcleaner.domain
 
 class VacuumCleaner(private val grid: Grid, private var position: Position) {
-    fun execute(sequence: String) {
-        position = Position("5", "6", "N")
-    }
+
+    fun execute(sequence: List<Instruction>) = sequence
+        .fold(position) { position, instruction -> position.execute(instruction) }
+        .also { position = it }
+
 }

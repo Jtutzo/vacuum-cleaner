@@ -1,3 +1,3 @@
 package com.jtutzo.ihoover.vacuumcleaner.domain
 
-data class Grid(val x: String, val y: String)
+data class Grid(val x: Int, val y: Int)
