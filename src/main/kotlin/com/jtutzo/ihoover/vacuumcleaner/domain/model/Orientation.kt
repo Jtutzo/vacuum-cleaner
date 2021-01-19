@@ -2,7 +2,7 @@ package com.jtutzo.ihoover.vacuumcleaner.domain.model
 
 enum class Orientation(private val code: String, private val value: Int) {
     NORTH("N", 0),
-    WEST("O", 1),
+    WEST("W", 1),
     SOUTH("S", 2),
     EAST("E", 3);
 

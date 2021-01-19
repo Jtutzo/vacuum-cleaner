@@ -12,7 +12,7 @@ Feature: A vacuum cleaner - execute sequence
       | 20,20    | 10,10           | N                  | DADADADAA        | 10,11         | N                |
       | 10,10    | 0,0             | N                  | AADAGAGADDAADA   | 2,2           | S                |
       | 8,5      | 4,3             | S                  | DADADADAGAGAGAGA | 4,3           | S                |
-      | 10,10    | 4,3             | S                  | GAAGADAGAAGGAAG  | 7,4           | O                |
+      | 10,10    | 4,3             | S                  | GAAGADAGAAGGAAG  | 7,4           | W                |
 
   Scenario Outline: throw an exception when the vacuum cleaner position is out of the grid
     Given I create an vacuum cleaner with "<gridSize>" as size grid, "<initialPosition>" as initial position and "<initialOrientation>" as initial orientation
