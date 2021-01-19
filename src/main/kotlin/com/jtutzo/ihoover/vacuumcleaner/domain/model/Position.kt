@@ -9,7 +9,7 @@ data class Position(val x: Int, val y: Int, val orientation: Orientation) {
         private const val INCR_POSITION_VALUE = 1
     }
 
-    fun execute(instruction: Instruction) = when (instruction) {
+    fun calculateNewPosition(instruction: Instruction) = when (instruction) {
         LEFT -> previousOrientation()
         RIGHT -> nextOrientation()
         ADVANCE -> advance()

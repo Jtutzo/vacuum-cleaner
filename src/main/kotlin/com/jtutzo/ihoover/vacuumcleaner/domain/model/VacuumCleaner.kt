@@ -6,8 +6,10 @@ class VacuumCleaner(private val grid: Grid, private var position: Position) {
         sequence.forEach(::execute)
     }
 
-    private fun execute(instruction: Instruction) = position
-        .execute(instruction)
-        .also { grid.checkIfPositionIsInGrid(it) }
-        .also { this.position = it }
+    private fun execute(instruction: Instruction) {
+        position
+            .calculateNewPosition(instruction)
+            .also { grid.verifyIsOnTheGrid(it) }
+            .let { this.position = it }
+    }
 }

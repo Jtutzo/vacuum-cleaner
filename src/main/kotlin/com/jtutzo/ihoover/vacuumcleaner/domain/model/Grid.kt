@@ -4,7 +4,7 @@ import com.jtutzo.ihoover.vacuumcleaner.domain.exception.OutOfGridException
 
 data class Grid(val x: Int, val y: Int) {
 
-    fun checkIfPositionIsInGrid(position: Position) {
+    fun verifyIsOnTheGrid(position: Position) {
         if (positionXIsOutOfGrid(position.x) || positionYIsOutOfGrid(position.y))
             throw OutOfGridException()
     }
