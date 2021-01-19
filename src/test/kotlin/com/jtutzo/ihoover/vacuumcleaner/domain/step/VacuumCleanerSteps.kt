@@ -1,6 +1,7 @@
 package com.jtutzo.ihoover.vacuumcleaner.domain.step
 
 import com.jtutzo.ihoover.vacuumcleaner.domain.Grid
+import com.jtutzo.ihoover.vacuumcleaner.domain.Orientation
 import com.jtutzo.ihoover.vacuumcleaner.domain.Position
 import com.jtutzo.ihoover.vacuumcleaner.domain.VacuumCleaner
 import io.cucumber.java.en.Given
@@ -12,10 +13,10 @@ class VacuumCleanerSteps {
 
     private var vacuumCleaner: VacuumCleaner? = null
 
-    @Given("i create an vacuum cleaner with {string} and {string} as position grid and {string}, {string} and {string} as initial position")
-    fun iCreateAnVacuumCleaner(gridX: String, gridY: String, vacuumCleanerX: String, vacuumCleanerY: String, vacuumCleanerOrientation: String) {
-        val grid = Grid(gridX, gridY)
-        val initialPosition = Position(vacuumCleanerX, vacuumCleanerY, vacuumCleanerOrientation)
+    @Given("i create an vacuum cleaner with {string} as size grid and {string} as initial position")
+    fun iCreateAnVacuumCleaner(gridSizeToString: String, initialPositionToString: String) {
+        val grid = factoryGrid(gridSizeToString)
+        val initialPosition = factoryPosition(initialPositionToString)
         vacuumCleaner = VacuumCleaner(grid, initialPosition)
     }
 
@@ -25,10 +26,18 @@ class VacuumCleanerSteps {
         vacuumCleaner?.execute(sequence)
     }
 
-    @Then("the new position of vacuum cleaner is {string}, {string} and {string}")
-    fun theNewPositionOfVacuumCleanerIs(vacuumCleanerX: String, vacuumCleanerY: String, vacuumCleanerOrientation: String) {
-        val finalPosition = Position(vacuumCleanerX, vacuumCleanerY, vacuumCleanerOrientation)
+    @Then("the new position of vacuum cleaner is {string}")
+    fun theNewPositionOfVacuumCleanerIs(finalPositionToString: String) {
+        val finalPosition = factoryPosition(finalPositionToString)
         assertThat(vacuumCleaner).isNotNull
         assertThat(vacuumCleaner).extracting("position").isEqualTo(finalPosition)
     }
 }
+
+private fun factoryGrid(gridSize: String) = gridSize
+    .split(",")
+    .let { Grid(it[0].toInt(), it[1].toInt()) }
+
+private fun factoryPosition(position: String) = position
+    .split(",")
+    .let { Position(it[0].toInt(), it[1].toInt(), Orientation.from(it[2])) }
