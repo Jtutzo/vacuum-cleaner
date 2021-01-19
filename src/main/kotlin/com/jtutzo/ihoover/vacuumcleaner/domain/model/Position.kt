@@ -1,7 +1,7 @@
-package com.jtutzo.ihoover.vacuumcleaner.domain
+package com.jtutzo.ihoover.vacuumcleaner.domain.model
 
-import com.jtutzo.ihoover.vacuumcleaner.domain.Instruction.*
-import com.jtutzo.ihoover.vacuumcleaner.domain.Orientation.*
+import com.jtutzo.ihoover.vacuumcleaner.domain.model.Instruction.*
+import com.jtutzo.ihoover.vacuumcleaner.domain.model.Orientation.*
 
 data class Position(val x: Int, val y: Int, val orientation: Orientation) {
 
@@ -9,7 +9,7 @@ data class Position(val x: Int, val y: Int, val orientation: Orientation) {
         private const val INCR_POSITION_VALUE = 1
     }
 
-    fun execute(instruction: Instruction) = when (instruction) {
+    fun calculateNewPosition(instruction: Instruction) = when (instruction) {
         LEFT -> previousOrientation()
         RIGHT -> nextOrientation()
         ADVANCE -> advance()

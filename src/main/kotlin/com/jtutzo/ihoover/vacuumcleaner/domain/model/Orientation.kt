@@ -1,4 +1,4 @@
-package com.jtutzo.ihoover.vacuumcleaner.domain
+package com.jtutzo.ihoover.vacuumcleaner.domain.model
 
 enum class Orientation(private val code: String, private val value: Int) {
     NORTH("N", 0),

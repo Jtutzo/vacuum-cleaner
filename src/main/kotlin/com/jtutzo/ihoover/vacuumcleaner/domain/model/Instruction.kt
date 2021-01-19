@@ -1,4 +1,4 @@
-package com.jtutzo.ihoover.vacuumcleaner.domain
+package com.jtutzo.ihoover.vacuumcleaner.domain.model
 
 enum class Instruction(private val code: String) {
     LEFT("G"),
