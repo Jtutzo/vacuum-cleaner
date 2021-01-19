@@ -6,10 +6,6 @@ enum class Orientation(private val code: String, private val value: Int) {
     SOUTH("S", 2),
     EAST("E", 3);
 
-    fun previous(): Orientation = value.minus(1).let(::fromValue)
-
-    fun next(): Orientation = value.plus(1).let(::fromValue)
-
     companion object {
 
         private const val MIN = -1
@@ -17,10 +13,16 @@ enum class Orientation(private val code: String, private val value: Int) {
 
         fun from(code: String) = values().find { code == it.code } ?: throw IllegalArgumentException()
 
-        private fun fromValue(value: Int) = when(value) {
-            MIN -> EAST
-            MAX -> NORTH
-            else -> values().find { value == it.value } ?: throw IllegalArgumentException()
-        }
     }
+
+    fun previous(): Orientation = value.minus(1).let(::fromValue)
+
+    fun next(): Orientation = value.plus(1).let(::fromValue)
+
+    private fun fromValue(value: Int) = when(value) {
+        MIN -> EAST
+        MAX -> NORTH
+        else -> values().find { value == it.value } ?: throw IllegalArgumentException()
+    }
+
 }
