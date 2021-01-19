@@ -12,7 +12,7 @@ class VacuumCleanerSteps {
     private var error: Throwable? = null
 
     @Given("I create an vacuum cleaner with {string} as size grid, {string} as initial position and {string} as initial orientation")
-    fun iCreateAnVacuumCleanerBis(gridSizeInStr: String, initialPositionInStr: String, initialOrientationInStr: String) {
+    fun iCreateAnVacuumCleaner(gridSizeInStr: String, initialPositionInStr: String, initialOrientationInStr: String) {
         val grid = Grid(factoryPosition(gridSizeInStr))
         val initialPosition = factoryPosition(initialPositionInStr)
         val initialOrientation = Orientation.from(initialOrientationInStr)

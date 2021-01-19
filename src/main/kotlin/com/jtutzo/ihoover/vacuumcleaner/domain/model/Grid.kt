@@ -1,6 +1,6 @@
 package com.jtutzo.ihoover.vacuumcleaner.domain.model
 
-import com.jtutzo.ihoover.vacuumcleaner.domain.exception.PositionOutOfGridException
+import com.jtutzo.ihoover.vacuumcleaner.domain.exception.PositionIsOutOfTheGridException
 
 data class Grid(private val endPosition: Position) {
 
@@ -10,6 +10,6 @@ data class Grid(private val endPosition: Position) {
 
     fun verifyIfPositionIsInTheGrid(position: Position) {
         if (position.isGreaterThan(this.endPosition) || position.isLessThan(START_POSITION))
-            throw PositionOutOfGridException()
+            throw PositionIsOutOfTheGridException()
     }
 }
