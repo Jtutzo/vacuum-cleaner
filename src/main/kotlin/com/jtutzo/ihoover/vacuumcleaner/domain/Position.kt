@@ -6,7 +6,7 @@ import com.jtutzo.ihoover.vacuumcleaner.domain.Orientation.*
 data class Position(val x: Int, val y: Int, val orientation: Orientation) {
 
     companion object {
-        private const val VALUE_ADVANCED = 1
+        private const val INCR_POSITION_VALUE = 1
     }
 
     fun execute(instruction: Instruction) = when (instruction) {
@@ -20,10 +20,10 @@ data class Position(val x: Int, val y: Int, val orientation: Orientation) {
     private fun nextOrientation(): Position = this.copy(orientation = orientation.next())
 
     private fun advance(): Position = when (orientation) {
-        NORTH -> this.copy(y = y.plus(VALUE_ADVANCED))
-        EAST -> this.copy(x = x.minus(VALUE_ADVANCED))
-        SOUTH -> this.copy(y = y.minus(VALUE_ADVANCED))
-        WEST -> this.copy(x = x.plus(VALUE_ADVANCED))
+        NORTH -> this.copy(y = y.plus(INCR_POSITION_VALUE))
+        EAST -> this.copy(x = x.minus(INCR_POSITION_VALUE))
+        SOUTH -> this.copy(y = y.minus(INCR_POSITION_VALUE))
+        WEST -> this.copy(x = x.plus(INCR_POSITION_VALUE))
     }
 
 }
