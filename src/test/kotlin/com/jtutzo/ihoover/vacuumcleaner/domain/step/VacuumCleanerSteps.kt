@@ -1,6 +1,6 @@
 package com.jtutzo.ihoover.vacuumcleaner.domain.step
 
-import com.jtutzo.ihoover.vacuumcleaner.domain.*
+import com.jtutzo.ihoover.vacuumcleaner.domain.model.*
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
@@ -9,7 +9,7 @@ import org.assertj.core.api.Assertions.*
 class VacuumCleanerSteps {
 
     private var vacuumCleaner: VacuumCleaner? = null
-    private var finalPositionExpected: Position? = null
+    private var error: Throwable? = null
 
     @Given("i create an vacuum cleaner with {string} as size grid and {string} as initial position")
     fun iCreateAnVacuumCleaner(gridSizeToString: String, initialPositionToString: String) {
@@ -22,16 +22,24 @@ class VacuumCleanerSteps {
     fun executeTheSequence(sequenceToString: String) {
         val sequence = factorySequence(sequenceToString)
         assertThat(vacuumCleaner).isNotNull
-        finalPositionExpected = vacuumCleaner?.execute(sequence)
+        try {
+            vacuumCleaner!!.execute(sequence)
+        } catch (exception: Throwable) {
+            error = exception
+        }
     }
 
     @Then("the new position of vacuum cleaner is {string}")
     fun theNewPositionOfVacuumCleanerIs(finalPositionToString: String) {
         val finalPosition = factoryPosition(finalPositionToString)
-        assertThat(finalPositionExpected).isNotNull
-        assertThat(finalPositionExpected).isEqualTo(finalPosition)
         assertThat(vacuumCleaner).isNotNull
         assertThat(vacuumCleaner).extracting("position").isEqualTo(finalPosition)
+    }
+
+    @Then("should display {string} error")
+    fun shouldDisplayError(errorMessage: String) {
+        assertThat(error).isNotNull
+        assertThat(error).hasMessage(errorMessage)
     }
 }
 
