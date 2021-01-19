@@ -12,12 +12,15 @@ enum class Orientation(private val code: String, private val value: Int) {
 
     companion object {
 
+        private const val MIN = -1
+        private const val MAX = 4
+
         fun from(code: String) = values().find { code == it.code } ?: throw IllegalArgumentException()
 
-        private fun fromValue(value: Int) = let {
-            if (value < 0) WEST
-            if (value > 3) NORTH
-            else values().find { value == it.value }!!
+        private fun fromValue(value: Int) = when(value) {
+            MIN -> EAST
+            MAX -> NORTH
+            else -> values().find { value == it.value } ?: throw IllegalArgumentException()
         }
     }
 }
