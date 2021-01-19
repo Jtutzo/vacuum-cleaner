@@ -8,8 +8,8 @@ L'aspirateur est capable :
  - d'exécuter une séquence au format "DGA" dans une grille déterminée
  - De gérer les problèmes de collision à la grille (choix d'une exception)
 
-Le programme n'a pas de fonction main, car j'ai développé les fonctionnalités en DDD \
-Pour vérifier son bon fonctionnement on peut exécuter les tests de scénario avec la commande `maven`:
+Le programme n'a pas de fonction main, car j'ai développé les fonctionnalités en DDD. \
+Pour vérifier son bon fonctionnement on peut exécuter les tests de scénario avec la commande `maven`.
 ```bash
 mvn clean test
 ```
