@@ -5,7 +5,7 @@ Réalisation d'un [aspirateur automatique](https://docs.google.com/document/d/1l
 <a href="https://github.com/jtutzo/vacuum-cleaner"><img alt="GitHub Actions status" src="https://github.com/jtutzo/vacuum-cleaner/workflows/maven/badge.svg"></a>
 
 L'aspirateur est capable :
- - d'exécuter une séquence de format "DGA" dans une grille déterminée
+ - d'exécuter une séquence au format "DGA" dans une grille déterminée
  - De gérer les problèmes de collision à la grille (choix d'une exception)
 
 Le programme n'a pas de fonction main, car j'ai développé les fonctionnalités en DDD \
