@@ -1,14 +1,15 @@
 package com.jtutzo.ihoover.vacuumcleaner.domain.model
 
-import com.jtutzo.ihoover.vacuumcleaner.domain.exception.OutOfGridException
+import com.jtutzo.ihoover.vacuumcleaner.domain.exception.PositionOutOfGridException
 
-data class Grid(val x: Int, val y: Int) {
+data class Grid(private val endPosition: Position) {
 
-    fun verifyIsOnTheGrid(position: Position) {
-        if (positionXIsOutOfGrid(position.x) || positionYIsOutOfGrid(position.y))
-            throw OutOfGridException()
+    companion object {
+        private val START_POSITION = Position(0, 0)
     }
 
-    private fun positionXIsOutOfGrid(x: Int) = x < 0 || x > this.x
-    private fun positionYIsOutOfGrid(y: Int) = y < 0 || y > this.y
+    fun verifyIfPositionIsInTheGrid(position: Position) {
+        if (position.isGreaterThan(this.endPosition) || position.isLessThan(START_POSITION))
+            throw PositionOutOfGridException()
+    }
 }
