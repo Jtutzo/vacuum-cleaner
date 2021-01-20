@@ -20,8 +20,8 @@ class VacuumCleanerSteps {
     }
 
     @When("execute the sequence {string}")
-    fun executeTheSequence(sequenceToString: String) {
-        val sequence = factorySequence(sequenceToString)
+    fun executeTheSequence(sequenceInStr: String) {
+        val sequence = factorySequence(sequenceInStr)
         assertThat(vacuumCleaner).isNotNull
         try {
             vacuumCleaner!!.execute(sequence)
