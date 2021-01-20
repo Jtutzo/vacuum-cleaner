@@ -16,13 +16,19 @@ class VacuumCleaner(private val grid: Grid, private var position: Position, priv
         }
     }
 
-    private fun changeToPreviousOrientation() = orientation.previous().also { this.orientation = it }
+    private fun changeToPreviousOrientation() {
+        this.orientation = orientation.previous()
+    }
 
-    private fun changeToNextOrientation() = orientation.next().also { this.orientation = it }
+    private fun changeToNextOrientation() {
+        this.orientation = orientation.next()
+    }
 
-    private fun movePosition() = position
-        .advanceTowards(orientation)
-        .also { grid.verifyIfPositionIsInTheGrid(it) }
-        .also { this.position = it }
+    private fun movePosition() {
+        position
+            .advanceTowards(orientation)
+            .also { grid.verifyIfPositionIsInTheGrid(it) }
+            .let { this.position = it }
+    }
 
 }

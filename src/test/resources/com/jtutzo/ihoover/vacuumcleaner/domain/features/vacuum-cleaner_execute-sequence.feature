@@ -4,8 +4,8 @@ Feature: A vacuum cleaner - execute sequence
   Scenario Outline: should execute the asked sequence
     Given I create an vacuum cleaner with "<gridSize>" as size grid, "<initialPosition>" as initial position and "<initialOrientation>" as initial orientation
     When execute the sequence "<sequence>"
-    Then the new position of vacuum cleaner is "<finalPosition>"
-    And the new orientation of vacuum cleaner is "<finalOrientation>"
+    Then the new position and orientation of vacuum cleaner are "<finalPosition>" and "<finalOrientation>"
+    And there is no error
     Examples:
       | gridSize | initialPosition | initialOrientation | sequence         | finalPosition | finalOrientation |
       | 10,10    | 5,5             | N                  | DADADADAA        | 5,6           | N                |
@@ -17,7 +17,7 @@ Feature: A vacuum cleaner - execute sequence
   Scenario Outline: throw an exception when the vacuum cleaner position is out of the grid
     Given I create an vacuum cleaner with "<gridSize>" as size grid, "<initialPosition>" as initial position and "<initialOrientation>" as initial orientation
     When execute the sequence "<sequence>"
-    Then should display "The position is out of the grid." error
+    Then there is an error with message "The position is out of the grid."
     Examples:
       | gridSize | initialPosition | initialOrientation| sequence         |
       | 10,10    | 5,10            | N                 | DADADADAA        |
