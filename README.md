@@ -1,8 +1,8 @@
 # Aspirateur automatique iHoover (Yanport)
 
-Réalisation d'un [aspirateur automatique](https://docs.google.com/document/d/1lmerjBXassYpTq-O-cfSBbw3yf0hv5GdlQSEqChTSXs/edit) pour la société Yanport.
-
 <a href="https://github.com/jtutzo/vacuum-cleaner/actions"><img alt="GitHub Actions status" src="https://github.com/Jtutzo/vacuum-cleaner/workflows/Java%20CI%20with%20Maven/badge.svg"></a>
+
+Réalisation d'un [aspirateur automatique](https://docs.google.com/document/d/1lmerjBXassYpTq-O-cfSBbw3yf0hv5GdlQSEqChTSXs/edit) pour la société Yanport.
 
 L'aspirateur est capable :
  - d'exécuter une séquence au format "DGA" dans une grille déterminée
@@ -49,4 +49,4 @@ Feature: A vacuum cleaner - execute sequence
 - `kotlin` (jvm 1.8)
 - `maven` pour la gestion des dépendances et du cycle de vie de l'application (test, compile, build)
 - `cucumber` pour les tests de scénario
-- `githubCI` pour l'intégration continue
+- `github Actions` pour l'intégration continue
