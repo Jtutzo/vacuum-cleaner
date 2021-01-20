@@ -6,7 +6,7 @@ Réalisation d'un [aspirateur automatique](https://docs.google.com/document/d/1l
 
 L'aspirateur est capable :
  - d'exécuter une séquence au format "DGA" dans une grille déterminée
- - De gérer les problèmes de collision à la grille (choix d'une exception)
+ - De gérer les problèmes de collision avec la grille (choix d'une exception)
 
 Le programme n'a pas de fonction main. J'ai développé les fonctionnalités en BDD. \
 Pour vérifier son bon fonctionnement on peut exécuter les tests de scénario avec la commande `maven`.
