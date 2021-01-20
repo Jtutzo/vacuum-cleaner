@@ -30,22 +30,22 @@ class VacuumCleanerSteps {
         }
     }
 
-    @Then("the new position of vacuum cleaner is {string}")
-    fun theNewPositionOfVacuumCleanerIs(finalPositionInStr: String) {
+    @Then("the new position and orientation of vacuum cleaner are {string} and {string}")
+    fun theNewPositionANdOrientationOfVacuumCleanerAre(finalPositionInStr: String, finalOrientationInStr: String) {
         val finalPosition = factoryPosition(finalPositionInStr)
-        assertThat(vacuumCleaner).isNotNull
-        assertThat(vacuumCleaner).extracting("position").isEqualTo(finalPosition)
-    }
-
-    @Then("the new orientation of vacuum cleaner is {string}")
-    fun theNewOrientationOfVacuumCleanerIs(finalOrientationInStr: String) {
         val finalOrientation = Orientation.from(finalOrientationInStr)
         assertThat(vacuumCleaner).isNotNull
+        assertThat(vacuumCleaner).extracting("position").isEqualTo(finalPosition)
         assertThat(vacuumCleaner).extracting("orientation").isEqualTo(finalOrientation)
     }
 
-    @Then("should display {string} error")
-    fun shouldDisplayError(errorMessage: String) {
+    @Then("there is no error")
+    fun thereIsNoError() {
+        assertThat(error).isNull()
+    }
+
+    @Then("there is an error with message {string}")
+    fun thereIsAnErrorWithMessage(errorMessage: String) {
         assertThat(error).isNotNull
         assertThat(error).hasMessage(errorMessage)
     }
