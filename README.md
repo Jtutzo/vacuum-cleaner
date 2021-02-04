@@ -1,6 +1,7 @@
 # Aspirateur automatique iHoover (Yanport)
 
-<a href="https://github.com/jtutzo/vacuum-cleaner/actions"><img alt="GitHub Actions status" src="https://github.com/Jtutzo/vacuum-cleaner/workflows/Java%20CI%20with%20Maven/badge.svg"></a>
+![Java CI with Maven](https://github.com/Jtutzo/vacuum-cleaner/workflows/Java%20CI%20with%20Maven/badge.svg)
+![Maven Package](https://github.com/Jtutzo/vacuum-cleaner/workflows/Maven%20Package/badge.svg)
 
 Réalisation d'un [aspirateur automatique](https://docs.google.com/document/d/1lmerjBXassYpTq-O-cfSBbw3yf0hv5GdlQSEqChTSXs/edit) pour la société Yanport.
 
