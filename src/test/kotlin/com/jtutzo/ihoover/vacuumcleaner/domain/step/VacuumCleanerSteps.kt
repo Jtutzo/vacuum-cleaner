@@ -55,4 +55,4 @@ private fun factoryPosition(position: String) = position
     .split(",")
     .let { Position(it[0].toInt(), it[1].toInt()) }
 
-private fun factorySequence(sequence: String) = sequence.map { Instruction.from(it.toString()) }
+private fun factorySequence(sequence: String) = sequence.toList()

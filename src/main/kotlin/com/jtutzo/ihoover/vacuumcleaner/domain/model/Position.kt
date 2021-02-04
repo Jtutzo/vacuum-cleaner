@@ -5,6 +5,7 @@ import com.jtutzo.ihoover.vacuumcleaner.domain.model.Orientation.*
 data class Position(private val x: Int, private val y: Int) {
 
     companion object {
+        val ZERO = Position(0, 0)
         private const val INCR_POSITION_VALUE = 1
     }
 
@@ -15,7 +16,7 @@ data class Position(private val x: Int, private val y: Int) {
         WEST -> this.copy(x = x.plus(INCR_POSITION_VALUE))
     }
 
-    fun isGreaterThan(position: Position): Boolean = this.x > position.x || this.y > position.y
-    fun isLessThan(position: Position): Boolean = this.x < position.x || this.y < position.y
+    fun isEqualOrLessThan(position: Position) = (x <= position.x).and(y <= position.y)
+    fun isEqualOrGreaterThan(position: Position) = (x >= position.x).and(y >= position.y)
 
 }

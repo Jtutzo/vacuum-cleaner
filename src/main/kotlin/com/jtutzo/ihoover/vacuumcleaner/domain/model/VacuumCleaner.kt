@@ -1,34 +1,34 @@
 package com.jtutzo.ihoover.vacuumcleaner.domain.model
 
-import com.jtutzo.ihoover.vacuumcleaner.domain.model.Instruction.*
+import com.jtutzo.ihoover.vacuumcleaner.domain.exception.PositionIsOutOfTheGridException
 
 class VacuumCleaner(private val grid: Grid, private var position: Position, private var orientation: Orientation) {
 
-    fun execute(sequence: List<Instruction>) {
-        sequence.forEach(::execute)
+    fun execute(sequence: List<Char>) {
+        sequence
+            .map(InstructionStrategy::from)
+            .forEach { it.executeOn(this) }
     }
 
-    private fun execute(instruction: Instruction) {
-        when (instruction) {
-            LEFT -> changeToPreviousOrientation()
-            RIGHT -> changeToNextOrientation()
-            ADVANCE -> movePosition()
-        }
-    }
-
-    private fun changeToPreviousOrientation() {
+    fun changeToPreviousOrientation() {
         this.orientation = orientation.previous()
     }
 
-    private fun changeToNextOrientation() {
+    fun changeToNextOrientation() {
         this.orientation = orientation.next()
     }
 
-    private fun movePosition() {
+    fun movePosition() {
         position
             .advanceTowards(orientation)
-            .also { grid.verifyIfPositionIsInTheGrid(it) }
-            .let { this.position = it }
+            .also(::checkPosition)
+            .let { position = it }
+    }
+
+    private fun checkPosition(position: Position) {
+        if (grid.contain(position).not()) {
+            throw PositionIsOutOfTheGridException()
+        }
     }
 
 }
