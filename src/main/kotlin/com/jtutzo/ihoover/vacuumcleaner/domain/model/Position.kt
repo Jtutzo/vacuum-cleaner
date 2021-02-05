@@ -2,7 +2,7 @@ package com.jtutzo.ihoover.vacuumcleaner.domain.model
 
 import com.jtutzo.ihoover.vacuumcleaner.domain.model.Orientation.*
 
-data class Position(private val x: Int, private val y: Int) {
+data class Position(val x: Int, val y: Int) {
 
     companion object {
         val ZERO = Position(0, 0)
