@@ -6,7 +6,7 @@
 
     <artifactId>vacuum-cleaner-domain</artifactId>
     <groupId>com.jtutzo.ihoover</groupId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>vacuum-cleaner</name>
